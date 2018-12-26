@@ -1,0 +1,132 @@
+{
+	"name": "electron-react-typescript-webpack",
+	"version": "0.1.0",
+	"description": "Electron + React + Typescript + Webpack",
+	"private": true,
+	"main": "./dist/main.js",
+	"scripts": {
+		"build-main": "cross-env NODE_ENV=production webpack --mode production --config webpack.main.prod.config.js",
+		"build-renderer": "cross-env NODE_ENV=production webpack --mode production --config webpack.renderer.prod.config.js",
+		"build": "yarn build-main && yarn build-renderer",
+		"start-renderer-dev": "webpack-dev-server --mode development --config webpack.renderer.dev.config.js",
+		"start-main-dev": "webpack --mode development --config webpack.main.config.js && electron ./dist/main.js",
+		"start-dev": "cross-env START_HOT=1 yarn start-renderer-dev",
+		"prestart": "yarn build",
+		"start": "electron .",
+		"lint": "tslint '{src,test,mocks}/**/*.{ts,tsx}' --project ./tsconfig.json",
+		"precommit": "lint-staged",
+		"test": "jest '(\\/test\\/(?!e2e/)).*'",
+		"pretest:e2e": "yarn build",
+		"test:e2e": "jest '(\\/test\\/e2e/).*'",
+		"pack": "yarn build && electron-builder --dir",
+		"dist": "yarn build && electron-builder",
+		"postinstall": "electron-builder install-app-deps"
+	},
+	"lint-staged": {
+		"{src,test,mocks}/**/*.{js,ts,tsx,json,css,scss,md}": [
+			"prettier --config ./.prettierrc --write",
+			"git add"
+		],
+		"{src,test,mocks}/**/*.{js,ts,tsx}": [
+			"tslint --project ./tsconfig.json --fix",
+			"git add"
+		]
+	},
+	"jest": {
+		"transform": {
+			"^.+\\.tsx?$": "ts-jest"
+		},
+		"testRegex": "(/test/.+\\.spec)\\.tsx?$",
+		"moduleFileExtensions": [
+			"ts",
+			"tsx",
+			"js",
+			"json",
+			"node"
+		],
+		"moduleNameMapper": {
+			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMock.js",
+			"\\.(s?css|sass)$": "<rootDir>/mocks/styleMock.js"
+		}
+	},
+	"build": {
+		"productName": "electron-react-typescript-webpack",
+		"appId": "com.example.electron-react-typescript-webpack",
+		"mac": {
+			"category": "Utility"
+		},
+		"directories": {
+			"output": "release"
+		},
+		"files": [
+			"dist/",
+			"node_modules/",
+			"package.json"
+		],
+		"linux": {
+			"target": "deb"
+		},
+		"win": {
+			"target": "nsis"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com:toor-t/electron-react-typescript-webpack.git"
+	},
+	"author": {
+		"name": "toor-t",
+		"email": ""
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": ""
+	},
+	"homepage": "",
+	"devDependencies": {
+		"@types/electron-devtools-installer": "^2.2.0",
+		"@types/jest": "^23.3.10",
+		"@types/react": "^16.7.13",
+		"@types/react-dom": "^16.0.11",
+		"@types/react-hot-loader": "^4.1.0",
+		"@types/react-test-renderer": "^16.0.3",
+		"@types/webpack-env": "^1.13.6",
+		"@types/electron-store": "^1.3.0",
+		"awesome-typescript-loader": "^5.2.1",
+		"cross-env": "^5.2.0",
+		"css-loader": "^2.0.0",
+		"electron": "^3.0.13",
+		"electron-builder": "^20.38.4",
+		"electron-devtools-installer": "^2.2.4",
+		"file-loader": "^2.0.0",
+		"html-webpack-plugin": "^3.2.0",
+		"husky": "^1.2.0",
+		"image-webpack-loader": "^4.6.0",
+		"jest": "^23.6.0",
+		"lint-staged": "^8.1.0",
+		"node-sass": "^4.11.0",
+		"prettier": "^1.15.3",
+		"react-hot-loader": "3.1.1",
+		"react-test-renderer": "^16.6.3",
+		"sass-loader": "^7.1.0",
+		"source-map-loader": "^0.2.4",
+		"spectron": "^5.0.0",
+		"style-loader": "^0.23.1",
+		"ts-jest": "^23.10.5",
+		"tslint": "^5.11.0",
+		"tslint-config-airbnb": "^5.11.1",
+		"tslint-config-prettier": "^1.17.0",
+		"tslint-react": "^3.6.0",
+		"typescript": "^3.2.2",
+		"uglifyjs-webpack-plugin": "1.2.5",
+		"webpack": "^4.27.1",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.10",
+		"webpack-merge": "^4.1.5"
+	},
+	"dependencies": {
+		"electron-store": "^2.0.0",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3"
+	}
+}
