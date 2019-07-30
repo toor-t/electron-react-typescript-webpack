@@ -140,13 +140,6 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/webdriverio@^4.13.0":
-  version "4.13.0"
-  resolved "https://registry.yarnpkg.com/@types/webdriverio/-/webdriverio-4.13.0.tgz#05acc3cbea6de5251c7adad16da1ee626858350e"
-  integrity sha512-4SpsMUy6MatxIQidOZR4HpAgIi5Lzpvo7nCdq+7SdLvUGCNLPLaWSwdtpHK+En3CqQTb559kSIWR4SKFWT8H3w==
-  dependencies:
-    "@types/node" "*"
-
 "@types/webpack-env@^1.13.6":
   version "1.13.6"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.6.tgz#128d1685a7c34d31ed17010fc87d6a12c1de6976"
@@ -5552,9 +5545,9 @@ lodash.debounce@^4.0.8:
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
 lodash.mergewith@^4.6.0:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.1.tgz#639057e726c3afbdb3e7d42741caa8d6e4335927"
-  integrity sha512-eWw5r+PYICtEBgrBE5hhlT6aAa75f411bgDz/ZL2KZqYV03USvucsxcHUIlGTDTECs1eunpI7HOV7U+WLDvNdQ==
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
+  integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
